@@ -1,0 +1,6 @@
+name: GroupChat
+main: moonplex.tajln.GroupChat
+version: 1.1
+
+description: Chat with your group memebers
+authors: [TAJLN]
