@@ -83,6 +83,11 @@ public class groupchatcommand extends SimpleCommand {
 
         UUID uuid = sender.getUniqueId();
 
+        if (!ConfigFetcher.getGroup(sender.getUniqueId()).equals("NONE")){
+            sender.sendMessage(prefix + "You are already in a group");
+            return;
+        }
+
         if (args.length == 1){
             sender.sendMessage(prefix + "You have to provide a group name");
             return;
@@ -176,14 +181,11 @@ public class groupchatcommand extends SimpleCommand {
         p.sendMessage(prefix + "You have 60 seconds to accept the invite by typing §a§l/groupchat invite accept");
 
 
-        scheduler.scheduleSyncDelayedTask(getPlugin(), new Runnable() {
-            @Override
-            public void run() {
-                if (invites.containsKey(p)) {
-                    sender.sendMessage(prefix + "Invite timer ran out");
-                    p.sendMessage(prefix + "Invite timer ran out");
-                    invites.remove(p);
-                }
+        scheduler.scheduleSyncDelayedTask(getPlugin(), () -> {
+            if (invites.containsKey(p)) {
+                sender.sendMessage(prefix + "Invite timer ran out");
+                p.sendMessage(prefix + "Invite timer ran out");
+                invites.remove(p);
             }
         }, 1200);
     }
