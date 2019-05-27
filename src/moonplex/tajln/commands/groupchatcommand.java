@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@CommandInfo(description="GroupChat command", usage=" /<command>", permission="clanchat.command", onlyIngame = true)
+@CommandInfo(description="GroupChat command", usage=" /<command>", permission="groupchat.command", onlyIngame = true)
 public class groupchatcommand extends SimpleCommand {
 
     private String prefix = "§9GroupChat> §f";
